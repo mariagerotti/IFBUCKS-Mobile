@@ -1,22 +1,17 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
 
-import Header from "../../components/Home/Header";
 
-export default function Home(){
-    return (
-    <View style={styles.container}>
-        <Text>
-            <Header/>
-        </Text>
-    </View>
-    );
+const HomeStack = createStackNavigator();
+
+function HomeScreen() {
+  return (
+    <HomeStack.Navigator initialRouteName="Home">
+      <HomeStack.Screen name="Home" component={Home} />
+      <HomeStack.Screen name="Page1" component={Page1} />
+      <HomeStack.Screen name="Page2" component={Page2} />
+    </HomeStack.Navigator>
+  );
 }
-
-const styles = StyleSheet.create({
-    container:{
-        flex:1,
-        justifyContent: 'center',
-        alignItens: 'center',
-    }
-});

@@ -1,11 +1,11 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-export default function Cart( ){
+export default function Payment(){
     return (
     <View style={styles.container}>
         <Text>
-            Página Cart
+            Página Beebida
         </Text>
     </View>
     );
