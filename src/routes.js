@@ -1,3 +1,4 @@
+
 import React from "react";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
@@ -10,7 +11,7 @@ import { Feather } from '@expo/vector-icons'
 
 const Tab = createBottomTabNavigator();
 
-export default function HomeRoutes() {
+export default function Routes() {
   return (
     <Tab.Navigator
       screenOptions={{
@@ -26,12 +27,12 @@ export default function HomeRoutes() {
       }}>
       <Tab.Screen
         name="Home"
-        component={HomeScreen}
+        component={Home} 
         options={{
           tabBarIcon: ({ size, color }) => (
             <Feather name="home" size={size} color={color} />
           ),
-          headerShown: false, // Ocultar o cabeçalho da tela Home
+          headerShown: false, 
         }}
       />
       <Tab.Screen
@@ -42,7 +43,7 @@ export default function HomeRoutes() {
           tabBarIcon: ({ size, color }) => (
             <CartButton size={size} color={color} />
           ),
-          headerShown: false, // Ocultar o cabeçalho da tela Cart
+          headerShown: false, 
         }}
       />
       <Tab.Screen
@@ -52,7 +53,7 @@ export default function HomeRoutes() {
           tabBarIcon: ({ size, color }) => (
             <Feather name="user" size={size} color={color} />
           ),
-          headerShown: false, // Ocultar o cabeçalho da tela Profile
+          headerShown: false, 
         }}
       />
     </Tab.Navigator>
