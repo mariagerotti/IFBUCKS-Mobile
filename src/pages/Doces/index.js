@@ -9,7 +9,7 @@ const DoceScreen = () => {
   const tableNumber = 5; 
 
   const product = {
-    imageProduct: 'https://encurtador.com.br/lwzJL', 
+    imageProduct: 'https://abrir.link/XIbcV', 
     nome: 'Torta',
     preco: 10.00,
     descricao: 'Descrição do Produto',

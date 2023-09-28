@@ -9,7 +9,7 @@ const SalgadoScreen = () => {
   const tableNumber = 5; 
 
   const product = {
-    imageProduct: 'https://encurtador.com.br/lwzJL', 
+    imageProduct: 'https://abrir.link/oy6O9', 
     nome: 'Coxinha',
     preco: 4.50,
     descricao: 'Descrição do Produto',

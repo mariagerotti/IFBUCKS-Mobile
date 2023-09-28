@@ -9,9 +9,9 @@ const BebidaScreen = () => {
   const tableNumber = 5; 
 
   const product = {
-    imageProduct: 'https://encurtador.com.br/lwzJL', 
-    nome: 'Bebida',
-    preco: 10.00,
+    imageProduct: 'https://abrir.link/JOsSP', 
+    nome: 'Chá',
+    preco: 3.00,
     descricao: 'Descrição do Produto',
   }
   return (
