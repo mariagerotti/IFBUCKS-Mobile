@@ -28,7 +28,7 @@ export default function Profile({ navigation }) {
   return (
     <View style={styles.container}>
       <Image
-        source={require('../../../assets/ifbuckslogo.png')}
+        source={require('../../../assets/eduardopicture.jpg')}
         style={styles.profilePicture}
       />
       <Text style={styles.name}>Eduardo da Silva</Text>
