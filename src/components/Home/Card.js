@@ -17,7 +17,7 @@ const PhotoCard = ({ product }) => {
       </View>
       <Text style={styles.desc}>{product.descricao}</Text>
       <TouchableOpacity style={styles.adicionar} onPress={handleAddPress}>
-        <Text style={styles.buttonText}>Adicionar ao Carrinho</Text>
+        <Text style={styles.buttonText}>+</Text>
       </TouchableOpacity>
     </View>
   );
@@ -25,9 +25,9 @@ const PhotoCard = ({ product }) => {
 
 const styles = StyleSheet.create({
   card: {
-    borderWidth: 1,
-    borderColor: "#ddd",
-    borderRadius: 10,
+    //borderWidth: 1,
+    //borderColor: "#ddd",
+    //borderRadius: 10,
     marginTop: 10,
     marginBottom: 20,
     marginLeft: 20,
@@ -37,8 +37,8 @@ const styles = StyleSheet.create({
   image: {
     width: "100%",
     height: 150,
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
+    borderRadius: 10,
+    //borderTopRightRadius: 10,
   },
   details: {
     flexDirection: "row",
@@ -58,22 +58,21 @@ const styles = StyleSheet.create({
   },
   adicionar: {
     backgroundColor: "#8fb090",
-    padding: 10,
-    borderRadius: 0,
-    borderBottomLeftRadius: 10,
-    borderBottomRightRadius: 10,
+    padding: 8,
+    borderRadius: 10,
+    borderColor: "#ddd",
     marginTop: 10,
   },
   buttonText: {
     color: "#fff",
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: "bold",
     textAlign: "center",
   },
   desc: {
     fontSize: 12,
-    textAlign: "center",
-    padding: 5,
+    textAlign: "left",
+    paddingLeft: 10,
   },
 });
 

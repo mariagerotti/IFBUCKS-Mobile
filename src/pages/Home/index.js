@@ -2,7 +2,7 @@ import React from "react";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { MaterialIcons } from 'react-native-vector-icons';
+import { MaterialCommunityIcons } from 'react-native-vector-icons';
 
 
 import CafeScreen from "../Cafe";
@@ -24,16 +24,16 @@ const AppNavigator = () => {
           if (route.name === 'Home') {
             iconName = 'home';
           } else if (route.name === 'Café') {
-            iconName = 'local-cafe';
+            iconName = 'coffee-outline';
           } else if (route.name === 'Bebidas') {
-            iconName = 'local-bar';
+            iconName = 'glass-cocktail';
           } else if (route.name === 'Doces') {
-            iconName = 'cake';
+            iconName = 'cake-variant-outline';
           } else if (route.name === 'Salgados') {
-            iconName = 'fastfood';
+            iconName = 'food-outline';
           }
 
-          return <MaterialIcons name={iconName} size={size} color={color} />;
+          return <MaterialCommunityIcons name={iconName} size={size} color={color} />;
         },
       })}
       tabBarOptions={{

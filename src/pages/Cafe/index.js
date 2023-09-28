@@ -9,7 +9,7 @@ const CafeScreen = () => {
   const tableNumber = 5; 
 
   const product = {
-    imageProduct: 'https://encurtador.com.br/lwzJL', // Substitua pela URL da imagem do produto
+    imageProduct: 'https://encurtador.com.br/lwzJL', 
     nome: 'Café',
     preco: 2.00,
     descricao: 'Descrição do Produto',
@@ -27,8 +27,7 @@ const CafeScreen = () => {
         <Card product={product} />
         <Card product={product} />
         </View>
-        
-        
+
       </ScrollView>
       
     </View>
@@ -44,9 +43,9 @@ const styles = StyleSheet.create({
   },
 
   FoodTitle: {
-    fontSize: 30,
+    fontSize: 40,
     padding: 10,
-    marginTop: 10,
+    marginTop: 5,
   },
 });
 
