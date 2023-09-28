@@ -64,7 +64,6 @@ const styles = StyleSheet.create({
   tableNumber: {
     fontSize: 14,
     color: '#888',
-    marginLeft: 10,
   },
   icon: {
     marginRight: 8,

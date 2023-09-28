@@ -1,20 +1,24 @@
-import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import Header from '../../components/Home/Header'; 
 
-export default function Payment(){
-    return (
+const BebidaScreen = () => {
+  const userPhoto = 'https://avatars.githubusercontent.com/u/48130339?v=4';
+  const username = 'Eduardo da Silva';
+  const tableNumber = 5; 
+
+  return (
     <View style={styles.container}>
-        <Text>
-            Página Beebida
-        </Text>
+      <Header userPhoto={userPhoto} username={username} tableNumber={tableNumber} />
+      
     </View>
-    );
-}
+  );
+};
 
 const styles = StyleSheet.create({
-    container:{
-        flex:1,
-        justifyContent: 'center',
-        alignItens: 'center',
-    }
+  container: {
+    flex: 10,
+  },
 });
+
+export default BebidaScreen;
