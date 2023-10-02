@@ -1,24 +1,56 @@
 import React, { useState } from "react";
 import { View, Image, Text, TouchableOpacity, StyleSheet } from "react-native";
 
-const PhotoCard = ({ product }) => {
-  const [add, setAdd] = useState(0);
+const PhotoCard = ({ product, addCarrinho }) => {
+  const [quantity, setQuantity] = useState(0);
 
-  const handleAddPress = () => {
-    setAdd(add + 1);
-  };
+  const add = () => setQuantity(quantity + 1);
+  const remove = () => setQuantity(quantity - 1);
+
+  function handleAddPress() {
+    addCarrinho({
+      produto: product.id,
+      quantidade: quantity,
+    });
+  }
 
   return (
     <View style={styles.card}>
-      <Image source={{ uri: product.imageProduct }} style={styles.image} resizeMode="cover" />
+      <Image
+        source={{ uri: product.imagem }}
+        style={styles.image}
+        resizeMode="cover"
+      />
       <View style={styles.details}>
         <Text style={styles.productName}>{product.nome}</Text>
-        <Text style={styles.price}>R$ {product.preco.toFixed(2)}</Text>
+        <Text style={styles.price}>R$ {product.preco}</Text>
       </View>
       <Text style={styles.desc}>{product.descricao}</Text>
-      <TouchableOpacity style={styles.adicionar} onPress={handleAddPress}>
-        <Text style={styles.buttonText}>+</Text>
-      </TouchableOpacity>
+      <Text style={styles.desc}>qtd.:{quantity}</Text>
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "space-between",
+          alignItems: "center",
+          paddingHorizontal: 10,
+          marginTop: 10,
+        }}
+      >
+        <TouchableOpacity
+          style={styles.adicionar}
+          onPress={remove}
+          disabled={quantity === 0}
+        >
+          <Text style={styles.buttonText}>-</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.adicionar} onPress={add}>
+          <Text style={styles.buttonText}>+</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.adicionar} onPress={handleAddPress}>
+          <Text style={styles.buttonText}>Adicionar</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -32,7 +64,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     marginLeft: 20,
     marginRight: 20,
-    width: "40%", 
+    width: "40%",
   },
   image: {
     width: "100%",

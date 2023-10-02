@@ -1,35 +1,84 @@
-import React from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import Header from '../../components/Home/Header'; 
-import Card from '../../components/Home/Card';
+import React, { useEffect, useState } from "react";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
+import Header from "../../components/Home/Header";
+import Card from "../../components/Home/Card";
+import axios from "axios";
+import { TouchableOpacity } from "react-native-web";
 
 const CafeScreen = () => {
-  const userPhoto = 'https://avatars.githubusercontent.com/u/48130339?v=4';
-  const username = 'Eduardo da Silva';
-  const tableNumber = 5; 
+  const userPhoto = "https://avatars.githubusercontent.com/u/48130339?v=4";
+  const username = "Eduardo da Silva";
+  const tableNumber = 5;
 
-  const product = {
-    imageProduct: 'https://encurtador.com.br/lwzJL', 
-    nome: 'Café',
-    preco: 2.00,
-    descricao: 'Descrição do Produto',
+  const [produtos, setProdutos] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const [carrinhoTemp, setCarrinhoTemp] = useState([]);
+
+  async function postPedido(item) {
+    try {
+      const response = await axios.post("http://localhost:8000/pedidos/", {
+        ...item,
+        carrinho: 1,
+        
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
   }
+
+  function addCarrinho(item) {
+    setCarrinhoTemp([...carrinhoTemp, item]);
+    postPedido(item);
+  }
+
+  async function getData() {
+    try {
+      const response = await axios.get(
+        "http://localhost:8000/categorias/cafes/produtos/?format=json"
+      );
+      const data = response.data;
+      setProdutos(data);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    getData();
+    console.log(produtos);
+  }, []);
   return (
     <View style={styles.container}>
-      <Header userPhoto={userPhoto} username={username} tableNumber={tableNumber} />
+      <Header
+        userPhoto={userPhoto}
+        username={username}
+        tableNumber={tableNumber}
+      />
       <ScrollView>
-      <Text style={styles.FoodTitle}>Cafés</Text>
-        <View style={{ flexDirection: "row", flexWrap: "wrap", justifyContent: "space-between" }}>
-        <Card product={product} />
-        <Card product={product} />
-        <Card product={product} />
-        <Card product={product} />
-        <Card product={product} />
-        <Card product={product} />
-        </View>
+        <Text style={styles.FoodTitle}>Cafés</Text>
 
+        <View
+          style={{
+            flexDirection: "row",
+            flexWrap: "wrap",
+            justifyContent:
+              loading || produtos.length === 0 ? "center" : "space-between",
+          }}
+        >
+          {loading ? (
+            <Text>Carregando...</Text>
+          ) : (
+            produtos.map((produto) => (
+              <Card product={produto} addCarrinho={addCarrinho} />
+            ))
+          )}
+          {produtos.length === 0 && <Text>Sem Produtos por enquanto.</Text>}
+        </View>
       </ScrollView>
-      
     </View>
   );
 };
@@ -37,7 +86,7 @@ const CafeScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor:'#ffff',
+    backgroundColor: "#ffff",
     flexDirection: "column",
     justifyContent: "space-between",
   },
