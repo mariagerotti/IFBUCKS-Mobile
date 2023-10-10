@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 
+
 export default function Login() {
   const [email, setEmail] = useState('');
   const [cpf, setCpf] = useState('');
@@ -48,7 +49,7 @@ const styles = StyleSheet.create({
     padding: 30,
     borderRadius: 10,
     width: '80%',
-    height: '50%',
+    height: '40%',
     justifyContent: 'flex-end',
   },
   title: {
