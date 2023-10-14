@@ -20,7 +20,6 @@ const CafeScreen = () => {
       const response = await axios.post("http://localhost:8000/pedidos/", {
         ...item,
         carrinho: 1,
-        
       });
       console.log(response.data);
     } catch (error) {
@@ -38,6 +37,7 @@ const CafeScreen = () => {
       const response = await axios.get(
         "http://localhost:8000/categorias/cafes/produtos/?format=json"
       );
+      console.log(response.data);
       const data = response.data;
       setProdutos(data);
       setLoading(false);

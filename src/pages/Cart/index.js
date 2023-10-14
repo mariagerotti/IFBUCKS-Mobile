@@ -16,6 +16,7 @@ const CartScreen = () => {
 
   useEffect(() => {
     getCartItems();
+    getTotal();
   }, []);
 
   async function getCartItems() {
@@ -25,26 +26,29 @@ const CartScreen = () => {
       );
       const data = response.data;
       setCartItems(data);
-      calculateTotal(data);
     } catch (error) {
       console.log(error);
     }
   }
 
-  const calculateTotal = (data) => {
-    let total = 0;
-    data.forEach((item) => {
-      total += item.preco;
-    });
-    setPrecoTotal(total.toFixed(2));
-  };
+  async function getTotal() {
+    try {
+      const response = await axios.get("http://localhost:8000/carrinho/1/");
+      const data = response.data;
+      setPrecoTotal(data.total);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <View style={styles.container}>
       <Text style={styles.cartTitle}>Carrinho de Compras</Text>
       <FlatList
         data={cartItems}
-        renderItem={({ item }) => <Card id={item.produto} />}
+        renderItem={({ item }) => (
+          <Card id={item.produto} quantidade={item.quantidade} />
+        )}
         keyExtractor={(item) => item.id.toString()}
       />
       <View

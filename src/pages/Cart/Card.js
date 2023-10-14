@@ -10,7 +10,7 @@ import {
   StyleSheet,
 } from "react-native";
 
-export default function Card({ id }) {
+export default function Card({ id, quantidade }) {
   const [item, setItem] = useState({});
   const [loading, setLoading] = useState(true);
 
@@ -38,6 +38,7 @@ export default function Card({ id }) {
         <Image source={{ uri: item.imagem }} style={styles.productImage} />
         <View>
           <Text style={styles.productName}>{item.nome}</Text>
+          <Text style={styles.productName}>{quantidade}</Text>
           <Text style={styles.productPrice}>R$ {item.preco}</Text>
         </View>
       </View>
