@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-//import Cadastro from '../Cadastro';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -13,11 +12,12 @@ export default function Login() {
     console.log('Email:', email);
     console.log('CPF:', cpf);
   };
+  
+
 
   const navigateToCadastro = () => {
     navigation.navigate('Cadastro');
   };
-
 
   return (
     <View style={styles.container}>
@@ -37,14 +37,13 @@ export default function Login() {
           <Text style={styles.loginButtonText}>Login</Text>
         </TouchableOpacity>
         <Text style={styles.signupLink}>
-          Não tem uma conta?{' '}
+          Não tem uma conta?{''}
           <Text style={styles.signupText} onPress={navigateToCadastro}>Cadastre-se</Text>
         </Text>
       </View>
     </View>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
