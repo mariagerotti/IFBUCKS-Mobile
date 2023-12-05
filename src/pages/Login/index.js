@@ -13,12 +13,10 @@ export default function Login() {
     console.log('CPF:', cpf);
   };
   
-
-
   const navigateToCadastro = () => {
     navigation.navigate('Cadastro');
   };
-
+  
   return (
     <View style={styles.container}>
       <View style={styles.formContainer}>
@@ -38,7 +36,9 @@ export default function Login() {
         </TouchableOpacity>
         <Text style={styles.signupLink}>
           Não tem uma conta?{''}
+          <TouchableOpacity>
           <Text style={styles.signupText} onPress={navigateToCadastro}>Cadastre-se</Text>
+          </TouchableOpacity>
         </Text>
       </View>
     </View>
