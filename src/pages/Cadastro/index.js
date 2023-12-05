@@ -2,22 +2,37 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-
-export default function Login() {
+export default function Cadastro() {
+  const [nome, setNome] = useState('');
+  const [idade, setIdade] = useState('');
   const [email, setEmail] = useState('');
   const [cpf, setCpf] = useState('');
+
   const navigation = useNavigation();
 
-  const handleLogin = () => {
+  const handleCadastro = () => {
+   
+    console.log('Nome:', nome);
+    console.log('Idade:', idade);
     console.log('Email:', email);
     console.log('CPF:', cpf);
   };
-  
-  
+
   return (
     <View style={styles.container}>
       <View style={styles.formContainer}>
-        <Text style={styles.title}>Bem Vindo!</Text>
+        <Text style={styles.title}>Cadastro</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Nome"
+          onChangeText={(text) => setNome(text)}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Idade"
+          keyboardType="numeric"
+          onChangeText={(text) => setIdade(text)}
+        />
         <TextInput
           style={styles.input}
           placeholder="Email"
@@ -26,15 +41,17 @@ export default function Login() {
         <TextInput
           style={styles.input}
           placeholder="CPF"
+          secureTextEntry={true}
           onChangeText={(text) => setCpf(text)}
         />
-        <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
-          <Text style={styles.loginButtonText}>Login</Text>
+        <TouchableOpacity style={styles.cadastroButton} onPress={handleCadastro}>
+          <Text style={styles.cadastroButtonText}>Cadastrar</Text>
         </TouchableOpacity>
       </View>
     </View>
   );
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -47,7 +64,7 @@ const styles = StyleSheet.create({
     padding: 30,
     borderRadius: 10,
     width: '80%',
-    height: '40%',
+    height: '60%', 
     justifyContent: 'flex-end',
   },
   title: {
@@ -63,24 +80,16 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     marginBottom: 10,
   },
-  loginButton: {
+  cadastroButton: {
     backgroundColor: '#8fb190',
     padding: 10,
     marginTop: 10,
     borderRadius: 5,
     alignItems: 'center',
   },
-  loginButtonText: {
+  cadastroButtonText: {
     color: 'white',
     fontSize: 18,
-    fontWeight: 'bold',
-  },
-  signupLink: {
-    marginTop: 10,
-    textAlign: 'center',
-  },
-  signupText: {
-    color: '#8fb190',
     fontWeight: 'bold',
   },
 });
