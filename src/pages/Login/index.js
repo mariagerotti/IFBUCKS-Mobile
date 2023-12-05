@@ -36,8 +36,8 @@ export default function Login() {
         </TouchableOpacity>
         <Text style={styles.signupLink}>
           Não tem uma conta?{''}
-          <TouchableOpacity>
-          <Text style={styles.signupText} onPress={navigateToCadastro}>Cadastre-se</Text>
+          <TouchableOpacity style={styles.signupText} onPress={navigateToCadastro}>
+          <Text> Cadastre-se agora</Text>
           </TouchableOpacity>
         </Text>
       </View>
