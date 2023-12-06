@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -18,32 +17,38 @@ export default function Login() {
   };
   
   return (
-    <View style={styles.container}>
-      <View style={styles.formContainer}>
-        <Text style={styles.title}>Bem Vindo!</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Email"
-          onChangeText={(text) => setEmail(text)}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="CPF"
-          onChangeText={(text) => setCpf(text)}
-        />
-        <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
-          <Text style={styles.loginButtonText}>Login</Text>
-        </TouchableOpacity>
-        <Text style={styles.signupLink}>
-          Não tem uma conta?{''}
-          <TouchableOpacity style={styles.signupText} onPress={navigateToCadastro}>
-          <Text> Cadastre-se agora</Text>
+    <ImageBackground
+      source={require('../../assets/fundo.png')} // Substitua pelo caminho correto para a sua imagem
+      style={styles.container}
+    >
+      <View >
+        <View style={styles.formContainer}>
+          <Text style={styles.title}>Bem Vindo!</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Email"
+            onChangeText={(text) => setEmail(text)}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="CPF"
+            onChangeText={(text) => setCpf(text)}
+          />
+          <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
+            <Text style={styles.loginButtonText}>Login</Text>
           </TouchableOpacity>
-        </Text>
+          <Text style={styles.signupLink}>
+            Não tem uma conta?{''}
+            <TouchableOpacity style={styles.signupText} onPress={navigateToCadastro}>
+              <Text> Cadastre-se agora</Text>
+            </TouchableOpacity>
+          </Text>
+        </View>
       </View>
-    </View>
+    </ImageBackground>
   );
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -56,13 +61,15 @@ const styles = StyleSheet.create({
     padding: 30,
     borderRadius: 10,
     width: '80%',
-    height: '40%',
-    justifyContent: 'flex-end',
+    height: '80%',
+    justifyContent: 'center',
+    alignItems: 'center',  // Centraliza o conteúdo horizontalmente
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 30,
+    textAlign: 'center',
   },
   input: {
     height: 40,
