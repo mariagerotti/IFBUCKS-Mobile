@@ -1,70 +1,26 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import ImagePicker from 'react-native-image-picker';
 
-export default function Cadastro() {
-  const [nome, setNome] = useState('');
-  const [idade, setIdade] = useState('');
+
+export default function Login() {
   const [email, setEmail] = useState('');
   const [cpf, setCpf] = useState('');
-  const [perfilImage, setPerfilImage] = useState(null);
-
   const navigation = useNavigation();
 
-  const handleCadastro = () => {
-    
-    console.log('Nome:', nome);
-    console.log('Idade:', idade);
+  const handleLogin = () => {
     console.log('Email:', email);
     console.log('CPF:', cpf);
-    console.log('Imagem de Perfil:', perfilImage);
   };
-
-  const handleImagePicker = () => {
-    ImagePicker.showImagePicker(
-      {
-        title: 'Escolha uma imagem',
-        storageOptions: {
-          skipBackup: true,
-          path: 'images',
-        },
-      },
-      (response) => {
-        if (response.didCancel) {
-          console.log('Usuário cancelou a escolha de imagem');
-        } else if (response.error) {
-          console.error('Erro ao escolher a imagem:', response.error);
-        } else {
-          
-          setPerfilImage(response.uri);
-        }
-      }
-    );
+  
+  const navigateToCadastro = () => {
+    navigation.navigate('Cadastro');
   };
-
+  
   return (
     <View style={styles.container}>
       <View style={styles.formContainer}>
-        <Text style={styles.title}>Cadastro</Text>
-        <TouchableOpacity onPress={handleImagePicker}>
-          {perfilImage ? (
-            <Image source={{ uri: perfilImage }} style={styles.perfilImage} />
-          ) : (
-            <Text style={styles.perfilImagePlaceholder}>Adicionar Foto de Perfil</Text>
-          )}
-        </TouchableOpacity>
-        <TextInput
-          style={styles.input}
-          placeholder="Nome"
-          onChangeText={(text) => setNome(text)}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Idade"
-          keyboardType="numeric"
-          onChangeText={(text) => setIdade(text)}
-        />
+        <Text style={styles.title}>Bem Vindo!</Text>
         <TextInput
           style={styles.input}
           placeholder="Email"
@@ -73,17 +29,21 @@ export default function Cadastro() {
         <TextInput
           style={styles.input}
           placeholder="CPF"
-          secureTextEntry={true}
           onChangeText={(text) => setCpf(text)}
         />
-        <TouchableOpacity style={styles.cadastroButton} onPress={handleCadastro}>
-          <Text style={styles.cadastroButtonText}>Cadastrar</Text>
+        <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
+          <Text style={styles.loginButtonText}>Login</Text>
         </TouchableOpacity>
+        <Text style={styles.signupLink}>
+          Não tem uma conta?{''}
+          <TouchableOpacity style={styles.signupText} onPress={navigateToCadastro}>
+          <Text> Cadastre-se agora</Text>
+          </TouchableOpacity>
+        </Text>
       </View>
     </View>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -96,14 +56,13 @@ const styles = StyleSheet.create({
     padding: 30,
     borderRadius: 10,
     width: '80%',
-    height: '70%', 
+    height: '40%',
     justifyContent: 'flex-end',
-    alignItems: 'center',
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 20,
+    marginBottom: 30,
   },
   input: {
     height: 40,
@@ -112,30 +71,25 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     paddingHorizontal: 10,
     marginBottom: 10,
-    width: '100%',
   },
-  cadastroButton: {
+  loginButton: {
     backgroundColor: '#8fb190',
     padding: 10,
     marginTop: 10,
     borderRadius: 5,
     alignItems: 'center',
-    width: '100%',
   },
-  cadastroButtonText: {
+  loginButtonText: {
     color: 'white',
     fontSize: 18,
     fontWeight: 'bold',
   },
-  perfilImage: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-    marginBottom: 10,
+  signupLink: {
+    marginTop: 10,
+    textAlign: 'center',
   },
-  perfilImagePlaceholder: {
-    fontSize: 16,
+  signupText: {
     color: '#8fb190',
-    marginBottom: 10,
+    fontWeight: 'bold',
   },
 });
