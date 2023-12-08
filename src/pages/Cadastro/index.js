@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import ImagePicker from 'react-native-image-picker';
 
@@ -10,7 +10,7 @@ export default function Cadastro() {
   const [cpf, setCpf] = useState('');
   const [perfilImage, setPerfilImage] = useState(null);
 
-  const navigation = useNavigation();
+  //const navigation = useNavigation();
 
   const handleCadastro = () => {
     
@@ -44,6 +44,10 @@ export default function Cadastro() {
   };
 
   return (
+    <ImageBackground
+    source={require('../../assets/fundo.png')} 
+    style={styles.container}
+    >
     <View style={styles.container}>
       <View style={styles.formContainer}>
         <Text style={styles.title}>Cadastro</Text>
@@ -81,6 +85,7 @@ export default function Cadastro() {
         </TouchableOpacity>
       </View>
     </View>
+  </ImageBackground>
   );
 }
 

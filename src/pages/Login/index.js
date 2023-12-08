@@ -18,7 +18,7 @@ export default function Login() {
   
   return (
     <ImageBackground
-      source={require('../../assets/fundo.png')} // Substitua pelo caminho correto para a sua imagem
+      source={require('../../assets/fundo.png')} 
       style={styles.container}
     >
       <View >
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     width: '80%',
     height: '80%',
     justifyContent: 'center',
-    alignItems: 'center',  // Centraliza o conteúdo horizontalmente
+    alignItems: 'center',  
   },
   title: {
     fontSize: 24,
