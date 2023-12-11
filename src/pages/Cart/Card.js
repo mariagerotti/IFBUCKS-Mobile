@@ -1,14 +1,7 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  FlatList,
-  Image,
-  StyleSheet,
-} from "react-native";
+import { View, Text, TouchableOpacity, FlatList, Image, StyleSheet } from 'react-native';
 
 export default function Card({ id, quantidade }) {
   const [item, setItem] = useState({});
@@ -50,74 +43,74 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 20,
-    backgroundColor: "#fff",
+    backgroundColor: '#fff'
   },
   cartTitle: {
     fontSize: 24,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginTop: 15,
     marginBottom: 20,
-    textAlign: "center",
+    textAlign: 'center'
   },
   cartItem: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     marginBottom: 15,
     borderRadius: 5,
     borderWidth: 1,
-    borderColor: "#ebebeb",
+    borderColor: '#ebebeb',
     padding: 20,
-    backgroundColor: "#ebebeb",
+    backgroundColor: '#ebebeb',
     marginLeft: 20,
-    marginRight: 20,
+    marginRight: 20
   },
   productImage: {
     width: 80,
     height: 80,
     marginRight: 10,
-    marginBottom: 10,
+    marginBottom: 10
   },
   productName: {
     fontSize: 16,
-    fontWeight: "bold",
+    fontWeight: 'bold'
   },
   productPrice: {
     fontSize: 16,
-    color: "#8fb090",
-    fontWeight: "bold",
+    color: '#8fb090',
+    fontWeight: 'bold'
   },
   quantityButtons: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center'
   },
   quantityButton: {
-    backgroundColor: "#8fb090",
+    backgroundColor: '#8fb090',
     borderRadius: 20,
     width: 30,
     height: 30,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   quantityButtonText: {
-    color: "#fff",
-    fontSize: 18,
+    color: '#fff',
+    fontSize: 18
   },
   quantityText: {
     fontSize: 18,
-    marginHorizontal: 10,
+    marginHorizontal: 10
   },
   totalText: {
     fontSize: 20,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginTop: 20,
-    textAlign: "center",
+    textAlign: 'center'
   },
   checkoutButton: {
-    backgroundColor: "#607660",
+    backgroundColor: '#607660',
     padding: 15,
     borderRadius: 10,
-    alignItems: "center",
-    margin: 10,
-  },
+    alignItems: 'center',
+    margin: 10
+  }
 });

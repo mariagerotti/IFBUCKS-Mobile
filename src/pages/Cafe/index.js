@@ -19,7 +19,8 @@ const CafeScreen = () => {
     try {
       const response = await axios.post('https://ifbucks.1.ie-1.fl0.io/pedidos/', {
         ...item,
-        carrinho: 1
+        carrinho: 1,
+        entregue: false
       });
       console.log(response.data);
     } catch (error) {
