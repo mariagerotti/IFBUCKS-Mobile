@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet, ScrollView } from "react-native";
-import Header from "../../components/Home/Header";
-import Card from "../../components/Home/Card";
-import axios from "axios";
-import { TouchableOpacity } from "react-native-web";
+import React, { useEffect, useState } from 'react';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import Header from '../../components/Home/Header';
+import Card from '../../components/Home/Card';
+import axios from 'axios';
+import { TouchableOpacity } from 'react-native-web';
 
 const CafeScreen = () => {
-  const userPhoto = "https://avatars.githubusercontent.com/u/48130339?v=4";
-  const username = "Eduardo da Silva";
+  const userPhoto = 'https://avatars.githubusercontent.com/u/48130339?v=4';
+  const username = 'Eduardo da Silva';
   const tableNumber = 5;
 
   const [produtos, setProdutos] = useState([]);
@@ -17,9 +17,9 @@ const CafeScreen = () => {
 
   async function postPedido(item) {
     try {
-      const response = await axios.post("https://ifbucks.1.ie-1.fl0.io/pedidos/", {
+      const response = await axios.post('https://ifbucks.1.ie-1.fl0.io/pedidos/', {
         ...item,
-        carrinho: 1,
+        carrinho: 1
       });
       console.log(response.data);
     } catch (error) {
@@ -34,9 +34,7 @@ const CafeScreen = () => {
 
   async function getData() {
     try {
-      const response = await axios.get(
-        "https://ifbucks.1.ie-1.fl0.io/categorias/cafes/produtos/?format=json"
-      );
+      const response = await axios.get('https://ifbucks.1.ie-1.fl0.io/categorias/cafes/produtos/?format=json');
       console.log(response.data);
       const data = response.data;
       setProdutos(data);
@@ -53,28 +51,20 @@ const CafeScreen = () => {
   }, []);
   return (
     <View style={styles.container}>
-      <Header
-        userPhoto={userPhoto}
-        username={username}
-        tableNumber={tableNumber}
-      />
+      <Header userPhoto={userPhoto} username={username} tableNumber={tableNumber} />
       <ScrollView>
         <Text style={styles.FoodTitle}>Cafés</Text>
 
         <View
           style={{
-            flexDirection: "row",
-            flexWrap: "wrap",
-            justifyContent:
-              loading || produtos.length === 0 ? "center" : "space-between",
-          }}
-        >
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+            justifyContent: loading || produtos.length === 0 ? 'center' : 'space-between'
+          }}>
           {loading ? (
             <Text>Carregando...</Text>
           ) : (
-            produtos.map((produto) => (
-              <Card product={produto} addCarrinho={addCarrinho} />
-            ))
+            produtos.map((produto) => <Card product={produto} addCarrinho={addCarrinho} />)
           )}
           {produtos.length === 0 && <Text>Sem Produtos por enquanto.</Text>}
         </View>
@@ -86,16 +76,16 @@ const CafeScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#ffff",
-    flexDirection: "column",
-    justifyContent: "space-between",
+    backgroundColor: '#ffff',
+    flexDirection: 'column',
+    justifyContent: 'space-between'
   },
 
   FoodTitle: {
     fontSize: 40,
     padding: 10,
-    marginTop: 5,
-  },
+    marginTop: 5
+  }
 });
 
 export default CafeScreen;

@@ -1,14 +1,7 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  FlatList,
-  Image,
-  StyleSheet,
-} from "react-native";
-import Card from "./Card";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { View, Text, TouchableOpacity, FlatList, Image, StyleSheet } from 'react-native';
+import Card from './Card';
 
 const CartScreen = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -21,9 +14,7 @@ const CartScreen = () => {
 
   async function getCartItems() {
     try {
-      const response = await axios.get(
-        "https://ifbucks.1.ie-1.fl0.io/mesas/1/pedidos/"
-      );
+      const response = await axios.get('https://ifbucks.1.ie-1.fl0.io/mesas/1/pedidos/');
       const data = response.data;
       setCartItems(data);
     } catch (error) {
@@ -33,7 +24,8 @@ const CartScreen = () => {
 
   async function getTotal() {
     try {
-      const response = await axios.get("https://ifbucks.1.ie-1.fl0.io/carrinho/1/");
+      const response = await axios.get('https://ifbucks.1.ie-1.fl0.io/carrinho/1/');
+      console.log(response.data);
       const data = response.data;
       setPrecoTotal(data.total);
     } catch (error) {
@@ -46,24 +38,18 @@ const CartScreen = () => {
       <Text style={styles.cartTitle}>Carrinho de Compras</Text>
       <FlatList
         data={cartItems}
-        renderItem={({ item }) => (
-          <Card id={item.produto} quantidade={item.quantidade} />
-        )}
+        renderItem={({ item }) => <Card id={item.produto} quantidade={item.quantidade} />}
         keyExtractor={(item) => item.id.toString()}
       />
       <View
         style={{
-          backgroundColor: "#8fb090",
+          backgroundColor: '#8fb090',
           paddingBottom: 20,
           borderTopRightRadius: 30,
-          borderTopLeftRadius: 30,
-        }}
-      >
+          borderTopLeftRadius: 30
+        }}>
         <Text style={styles.totalText}>Total: R$ {precoTotal}</Text>
-        <TouchableOpacity
-          style={styles.checkoutButton}
-          onPress={() => checkout()}
-        >
+        <TouchableOpacity style={styles.checkoutButton} onPress={() => checkout()}>
           <Text>Finalizar Compra</Text>
         </TouchableOpacity>
       </View>
@@ -75,28 +61,28 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 20,
-    backgroundColor: "#fff",
+    backgroundColor: '#fff'
   },
   cartTitle: {
     fontSize: 24,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginTop: 15,
     marginBottom: 20,
-    textAlign: "center",
+    textAlign: 'center'
   },
   totalText: {
     fontSize: 20,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginTop: 20,
-    textAlign: "center",
+    textAlign: 'center'
   },
   checkoutButton: {
-    backgroundColor: "#607660",
+    backgroundColor: '#607660',
     padding: 15,
     borderRadius: 10,
-    alignItems: "center",
-    margin: 10,
-  },
+    alignItems: 'center',
+    margin: 10
+  }
 });
 
 export default CartScreen;
