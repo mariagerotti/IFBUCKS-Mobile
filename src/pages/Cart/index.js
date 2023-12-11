@@ -22,7 +22,7 @@ const CartScreen = () => {
   async function getCartItems() {
     try {
       const response = await axios.get(
-        "http://localhost:8000/mesas/1/pedidos/"
+        "https://ifbucks.1.ie-1.fl0.io/mesas/1/pedidos/"
       );
       const data = response.data;
       setCartItems(data);
@@ -33,7 +33,7 @@ const CartScreen = () => {
 
   async function getTotal() {
     try {
-      const response = await axios.get("http://localhost:8000/carrinho/1/");
+      const response = await axios.get("https://ifbucks.1.ie-1.fl0.io/carrinho/1/");
       const data = response.data;
       setPrecoTotal(data.total);
     } catch (error) {

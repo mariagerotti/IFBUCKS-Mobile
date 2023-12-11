@@ -1,17 +1,37 @@
-import api from '../plugins/api';
+//import api from '../plugins/api';
+//
+//class LoginApi {
+//  async login(username, password) {
+//    try {
+//      const { data } = await api.post('/token/', {
+//        username,
+//        password,
+//      });
+//      return Promise.resolve(data);
+//    } catch (error) {
+//      return Promise.error(error);
+//    }
+//  }
+//}
+//
+//export default new LoginApi();
 
-class LoginApi {
-  async login(username, password) {
+import axios from "axios";
+
+export async function login(email, password) {
+  return new Promise(async (resolve, reject) => {
     try {
-      const { data } = await api.post('/token/', {
-        cpf,
-        password,
-      });
-      return Promise.resolve(data);
+      console.log("Login was called with", email, password);
+      let request = await axios.post(
+        "https://ifbucks.1.ie-1.fl0.io/api/token/",
+        {
+          email: email,
+          password: password,
+        }
+      );
+      resolve(request.data);
     } catch (error) {
-      return Promise.error(error);
+      reject(error);
     }
-  }
+  });
 }
-
-export default new LoginApi();

@@ -16,7 +16,7 @@ export default function Card({ id, quantidade }) {
 
   async function getItem(id) {
     try {
-      const response = await axios.get(`http://localhost:8000/produtos/${id}/`);
+      const response = await axios.get(`https://ifbucks.1.ie-1.fl0.io/produtos/${id}/`);
       const data = response.data;
       setItem(data);
 

@@ -12,7 +12,7 @@ const SalgadoScreen = () => {
 
   async function postPedido(item) {
     try {
-      const response = await axios.post("http://localhost:8000/pedidos/", {
+      const response = await axios.post("https://ifbucks.1.ie-1.fl0.io/pedidos/", {
         ...item,
         carrinho: 1,
       });
@@ -30,7 +30,7 @@ const SalgadoScreen = () => {
   async function getData() {
     try {
       const response = await axios.get(
-        "http://localhost:8000/categorias/salgados/produtos/?format=json"
+        "https://ifbucks.1.ie-1.fl0.io/categorias/salgados/produtos/?format=json"
       );
 
       const data = response.data;

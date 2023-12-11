@@ -19,7 +19,7 @@ const Header = ({ userPhoto, username, tableNumber }) => {
 
   async function getData() {
     try {
-      const response = await axios.get("http://localhost:8000/usuarios/1/");
+      const response = await axios.get("https://ifbucks.1.ie-1.fl0.io/usuarios/1/");
       const data = response.data;
       setUser(data);
       setLoading(false);
