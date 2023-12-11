@@ -40,7 +40,7 @@ export default function Login() {
           <Text style={styles.signupLink}>
             Não tem uma conta?{''}
             <TouchableOpacity style={styles.signupText} onPress={navigateToCadastro}>
-              <Text> Cadastre-se agora</Text>
+              <Text style={styles.signupLink}> Cadastre-se agora</Text>
             </TouchableOpacity>
           </Text>
         </View>
@@ -57,19 +57,17 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   formContainer: {
-    backgroundColor: 'rgba(240, 240, 240, 0.7)',
+    backgroundColor: 'rgba(240, 240, 240, 0.9)',
     padding: 30,
     borderRadius: 10,
     width: '80%',
-    height: '80%',
-    justifyContent: 'center',
-    alignItems: 'center',  
+    height: '62%',
+    justifyContent: 'flex-end',
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 30,
-    textAlign: 'center',
   },
   input: {
     height: 40,
@@ -98,5 +96,6 @@ const styles = StyleSheet.create({
   signupText: {
     color: '#8fb190',
     fontWeight: 'bold',
+    marginTop: 50,
   },
 });

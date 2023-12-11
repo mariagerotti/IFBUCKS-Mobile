@@ -94,21 +94,20 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff',
+
   },
   formContainer: {
-    backgroundColor: '#',
+    backgroundColor: 'rgba(240, 240, 240, 0.9)',
     padding: 30,
     borderRadius: 10,
     width: '80%',
-    height: '70%', 
+    height: '62%',
     justifyContent: 'flex-end',
-    alignItems: 'center',
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 20,
+    marginBottom: 30,
   },
   input: {
     height: 40,
@@ -117,7 +116,6 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     paddingHorizontal: 10,
     marginBottom: 10,
-    width: '100%',
   },
   cadastroButton: {
     backgroundColor: '#8fb190',
@@ -125,22 +123,19 @@ const styles = StyleSheet.create({
     marginTop: 10,
     borderRadius: 5,
     alignItems: 'center',
-    width: '100%',
   },
-  cadastroButtonText: {
+  loginButtonText: {
     color: 'white',
     fontSize: 18,
     fontWeight: 'bold',
   },
-  perfilImage: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-    marginBottom: 10,
+  signupLink: {
+    marginTop: 10,
+    textAlign: 'center',
   },
-  perfilImagePlaceholder: {
-    fontSize: 16,
+  cadastroButton: {
     color: '#8fb190',
-    marginBottom: 10,
+    fontWeight: 'bold',
+    marginTop: 50,
   },
 });
