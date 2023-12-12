@@ -12,6 +12,17 @@ const CartScreen = () => {
     getTotal();
   }, []);
 
+  const checkout = async () => {
+    try {
+      // Implement your checkout logic here
+      // For example, you can make an API request to finalize the purchase
+      console.log('Checkout initiated');
+    } catch (error) {
+      console.error('Error during checkout:', error);
+    }
+  };
+  
+
   async function getCartItems() {
     try {
       const response = await axios.get('https://ifbucks.1.ie-1.fl0.io/mesas/1/pedidos/');
@@ -49,10 +60,10 @@ const CartScreen = () => {
           borderTopLeftRadius: 30
         }}>
         <Text style={styles.totalText}>Total: R$ {precoTotal}</Text>
-        <TouchableOpacity style={styles.checkoutButton} onPress={() => checkout()}>
-          <Text>Finalizar Compra</Text>
-        </TouchableOpacity>
-      </View>
+        <TouchableOpacity style={styles.checkoutButton} onPress={checkout}>
+        <Text>Finalizar Compra</Text>
+      </TouchableOpacity>
+    </View>
     </View>
   );
 };
