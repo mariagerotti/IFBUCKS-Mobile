@@ -26,18 +26,19 @@ export default function Login() {
           <Text style={styles.title}>Bem Vindo!</Text>
           <TextInput
             style={styles.input}
-            placeholder="Email"
+            placeholder="Usuário"
             onChangeText={(text) => setEmail(text)}
           />
           <TextInput
             style={styles.input}
-            placeholder="CPF"
+            placeholder="Senha"
+            secureTextEntry={true}
             onChangeText={(text) => setCpf(text)}
           />
           <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
             <Text style={styles.loginButtonText}>Login</Text>
           </TouchableOpacity>
-          <Text style={styles.signupLink}>
+          <Text >
             Não tem uma conta?{''}
             <TouchableOpacity style={styles.signupText} onPress={navigateToCadastro}>
               <Text style={styles.signupLink}> Cadastre-se agora</Text>
@@ -89,13 +90,13 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
   },
-  signupLink: {
+  signupText: {
     marginTop: 10,
     textAlign: 'center',
   },
-  signupText: {
+  signupLink: {
     color: '#8fb190',
     fontWeight: 'bold',
-    marginTop: 50,
+    marginTop: 10,
   },
 });

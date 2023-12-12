@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet, ImageBackground } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+//import { useNavigation } from '@react-navigation/native';
 import ImagePicker from 'react-native-image-picker';
 
 export default function Cadastro() {
@@ -71,12 +71,12 @@ export default function Cadastro() {
         />
         <TextInput
           style={styles.input}
-          placeholder="Email"
+          placeholder="Usuário"
           onChangeText={(text) => setEmail(text)}
         />
         <TextInput
           style={styles.input}
-          placeholder="CPF"
+          placeholder="Senha"
           secureTextEntry={true}
           onChangeText={(text) => setCpf(text)}
         />
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
     padding: 30,
     borderRadius: 10,
     width: '80%',
-    height: '62%',
+    height: '50%',
     justifyContent: 'flex-end',
   },
   title: {
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     alignItems: 'center',
   },
-  loginButtonText: {
+  cadastroButtonText: {
     color: 'white',
     fontSize: 18,
     fontWeight: 'bold',
@@ -133,9 +133,9 @@ const styles = StyleSheet.create({
     marginTop: 10,
     textAlign: 'center',
   },
-  cadastroButton: {
+  perfilImagePlaceholder: {
     color: '#8fb190',
     fontWeight: 'bold',
-    marginTop: 50,
+    marginBottom: 15,
   },
 });
