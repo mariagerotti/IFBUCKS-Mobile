@@ -1,9 +1,7 @@
 import axios from 'axios';
 
-const { MY_IP } = process.env;
-
 const api = axios.create({
-  baseURL: `http://${MY_IP}:19006/api/`,
+  baseURL: 'https://ifbucks.1.ie-1.fl0.io/',
 });
 
-export default api;
+export default api

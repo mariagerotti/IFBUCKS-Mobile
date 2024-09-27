@@ -1,98 +1,102 @@
-import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet } from "react-native";
+import React, { useState } from 'react';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-export default function Login({ navigation }) {
-  const [cpf, setCPF] = useState('');
-  const [password, setPassword] = useState('');
-  const [isEmailValid, setIsEmailValid] = useState(false);
-  const [selectedTable, setSelectedTable] = useState(''); 
+export default function Login() {
+  const [email, setEmail] = useState('');
+  const [cpf, setCpf] = useState('');
+  const navigation = useNavigation();
+
   const handleLogin = () => {
+    console.log('Email:', email);
     console.log('CPF:', cpf);
-    console.log('Senha:', password);
-    console.log('Mesa:', selectedTable);
-
-    if (cpf === password) {
-      navigation.navigate('Home');
-    } else {
-      alert('CPF inválido!');
-    }
   };
-
-  const validateEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+/;
-    setIsEmailValid(emailRegex.test(email));
+  
+  const navigateToCadastro = () => {
+    navigation.navigate('Cadastro');
   };
-
+  
   return (
-    <View style={styles.container}>
-      <Image
-        source={require('../assets/ifbuckslogo.png')} 
-        style={styles.logo}
-      />
-      <Text style={styles.title}>BEM VINDO</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="CPF"
-        onChangeText={setCPF}
-        value={cpf}
-        keyboardType="numeric"
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Mesa"
-        onChangeText={setSelectedTable}
-        value={selectedTable}
-        keyboardType="numeric"
-      />
-      <TouchableOpacity style={styles.button} onPress={handleLogin}>
-        <Text style={styles.buttonText}>Entrar</Text>
-      </TouchableOpacity>
-    </View>
+    <ImageBackground
+      source={require('../../assets/fundo.png')} 
+      style={styles.container}
+    >
+      <View >
+        <View style={styles.formContainer}>
+          <Text style={styles.title}>Bem Vindo!</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Usuário"
+            onChangeText={(text) => setEmail(text)}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Senha"
+            secureTextEntry={true}
+            onChangeText={(text) => setCpf(text)}
+          />
+          <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
+            <Text style={styles.loginButtonText}>Login</Text>
+          </TouchableOpacity>
+          <Text >
+            Não tem uma conta?{''}
+            <TouchableOpacity style={styles.signupText} onPress={navigateToCadastro}>
+              <Text style={styles.signupLink}> Cadastre-se agora</Text>
+            </TouchableOpacity>
+          </Text>
+        </View>
+      </View>
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white',
-    padding: 20,
+    backgroundColor: '#fff',
   },
-  logo: {
-    marginTop: 120,
-    width: 200, 
-    height: 200,
+  formContainer: {
+    backgroundColor: 'rgba(240, 240, 240, 0.9)',
+    padding: 30,
+    borderRadius: 10,
+    width: '80%',
+    height: '62%',
+    justifyContent: 'flex-end',
   },
   title: {
-    fontSize: 40,
+    fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 20,
+    marginBottom: 30,
   },
   input: {
-    width: '100%',
-    height: 55,
+    height: 40,
+    borderColor: 'gray',
     borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 10,
-    marginBottom: 20,
+    borderRadius: 5,
     paddingHorizontal: 10,
-    backgroundColor: '#d9d9d9',
+    marginBottom: 10,
   },
-  button: {
-    width: '50%',
-    height: 50,
-    backgroundColor: '#8fb090',
-    borderRadius: 10,
+  loginButton: {
+    backgroundColor: '#8fb190',
+    padding: 10,
+    marginTop: 10,
+    borderRadius: 5,
     alignItems: 'center',
-    justifyContent: 'center',
   },
-  buttonText: {
+  loginButtonText: {
+    color: 'white',
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#fff',
   },
-  errorMessage: {
-    color: 'red',
-    marginBottom: 10,
+  signupText: {
+    marginTop: 10,
+    textAlign: 'center',
+  },
+  signupLink: {
+    color: '#8fb190',
+    fontWeight: 'bold',
+    marginTop: 10,
   },
 });
